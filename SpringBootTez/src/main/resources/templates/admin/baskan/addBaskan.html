@@ -7,7 +7,7 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title>Blog Main Layout</title>
+	<title>Dumlupinar University</title>
 	
 	<link rel="stylesheet" href="../static/css/blog.css" th:href="@{/css/blog.css}"/>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
@@ -71,21 +71,21 @@
 			<input type="hidden" th:field="*{baskanId}" />
 			<div class="form-group">
 				<label class="col-sm-2 control-label">Ad Soyad: </label>
-				<div class="col-md-10">
-					<input type="text" class="form-control" th:field="*{baskanAdSoyad}" />
+				<div class="col-md-6">
+					<input type="text" class="form-control" th:field="*{baskanAdSoyad}" required="true" />
 				</div>
 			</div>
 			<div class="form-group">
 		    	<label class="col-sm-2 control-label">Telefon</label>
-		    	<div class="col-md-10">
-		    		<input type="text" class="form-control" th:field="*{baskanTelefon}" />
+		    	<div class="col-md-6">
+		    		<input type="text" class="form-control" th:field="*{baskanTelefon}" required="true"  />
 		    	</div>
 		  	</div>
 		
 			<div class="form-group">
 		    	<label class="col-sm-2 control-label">Baskan Mail</label>
-		    	<div class="col-md-10">
-		    		<input type="text" class="form-control" th:field="*{baskanMail}" />
+		    	<div class="col-md-6">
+		    		<input type="text" class="form-control" th:field="*{baskanMail}" required="true"  />
 		    	</div>
 		  	</div>
 		

@@ -16,6 +16,10 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import app.json.JsonDateSerializer;
+
 @Entity
 @Table(name="kulup")
 public class Kulup {
@@ -24,18 +28,32 @@ public class Kulup {
 	@GeneratedValue(strategy=GenerationType.TABLE)
 	@Column(name="kulupId")
 	private int kulupId;
+	
 	@Column(name="kulupAd")
 	private String kulupAd;
+	
 	@Column(name="kulupIcerik",columnDefinition = "TEXT")
 	private String kulupIcerik;
+	
 	@Column(name="kulupLogo")
 	private String kulupLogo;
-
-	@ManyToOne
-	@JoinColumn(name="baskan",unique=true)
-	private Baskan baskan;
-
 	
+	@Temporal(TemporalType.DATE)
+	@Column(name="kulupTarih")
+	private Date kulupTarih;
+	
+	@Column(name="kulupDurum")
+	private Boolean kulupDurum;
+	
+	@Column(name="baskanAdSoyad")
+	private String baskanAdSoyad;
+
+	public String getBaskanAdSoyad() {
+		return baskanAdSoyad;
+	}
+	public void setBaskanAdSoyad(String baskanAdSoyad) {
+		this.baskanAdSoyad = baskanAdSoyad;
+	}
 	
 	public int getKulupId() {
 		return kulupId;
@@ -61,20 +79,29 @@ public class Kulup {
 	public void setKulupLogo(String kulupLogo) {
 		this.kulupLogo = kulupLogo;
 	}	
-	
-	public Baskan getBaskan() {
-		return baskan;
+
+	@JsonSerialize(using=JsonDateSerializer.class) 
+	public Date getKulupTarih() {
+		return kulupTarih;
 	}
-	public void setBaskan(Baskan baskan) {
-		this.baskan = baskan;
+	public void setKulupTarih(Date kulupTarih) {
+		this.kulupTarih = kulupTarih;
 	}
 	
-	public Kulup(String kulupAd, String kulupIcerik, String kulupLogo, Baskan baskan) {
+	public Boolean getKulupDurum() {
+		return kulupDurum;
+	}
+	public void setKulupDurum(Boolean kulupDurum) {
+		this.kulupDurum = kulupDurum;
+	}
+	
+	public Kulup(String kulupAd, String kulupIcerik, String kulupLogo, Date kulupTarih, Boolean kulupDurum) {
 		super();
 		this.kulupAd = kulupAd;
 		this.kulupIcerik = kulupIcerik;
 		this.kulupLogo = kulupLogo;
-		this.baskan = baskan;
+		this.kulupTarih = kulupTarih;
+		this.kulupDurum = kulupDurum;
 	}
 	public Kulup() {
 		super();

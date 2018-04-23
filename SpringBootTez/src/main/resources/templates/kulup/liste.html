@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="tr"
+<html lang="en"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
@@ -9,19 +9,17 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<title>Dumlupinar University</title>
 	
-
+	<link rel="stylesheet" href="../static/css/blog.css" th:href="@{/css/blog.css}"/>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
 		
 	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css' />	
 	<link href='https://fonts.googleapis.com/css?family=Exo' rel='stylesheet' type='text/css' />
-	
+
 </head>
 <body>
 
 	<div class="container">
-  		 
-			 
-		<nav class="navbar navbar-default">
+  		<nav class="navbar navbar-default">
 		    <div class="container-fluid">
 		        <div class="navbar-header">
 		            <a class="navbar-brand" href="/">Ogrenci Kuluplerine Hosgeldin!</a>
@@ -64,24 +62,39 @@
 		    </div>
 		</nav>	
 		
-		<div class="col-md-3">
-		<form name="f" th:action="@{/login}" method="post" class="form-signin">
-		    <h2 class="form-signin-heading">Lutfen Giris Yapin!</h2>
-            <div th:if="${param.error}" class="alert alert-danger">    
-                Gecersiz Kullanici
-            </div>
-            <div th:if="${param.logout}" class="alert alert-success"> 
-               Cikis Basarili
-            </div>		    
-		    <label for="username" >Kullanici Adi</label>
-		    <input type="text" id="username" name="username" class="form-control" placeholder="kullanici adi zorunlu" required="true" />
-		    <label for="password" >Sifre</label>
-		    <input type="password" id="password" name="password" class="form-control" placeholder="sifre zorunlu" required="true" /> </br>
+		<div class="col-md-12">
+	
+		<h2>Kulupler</h2>
+		<br/>
+
+	   	<table class="table table-striped">
+			<thead> 
+				<tr> 
+					<th>#</th> 
+					<th>Ad</th> 
+					<th>Icerik</th> 
+					<th>Logo</th> 
+					<th>Tarih</th> 
+					<th>Durum</th> 
+					<th>Baskan</th> 
+				
+				</tr> 
+			</thead>
+			<tbody>
+				<tr th:each="kulup, iterationStatus : ${kulupler}">
+					<td th:text="${iterationStatus.count}">1</td>
+					<td th:text="${kulup.kulupAd}">Ad</td>
+					<td th:text="${kulup.kulupIcerik}">Icerik</td>
+					<td th:text="${kulup.kulupLogo}">Logo</td>
+					<td th:text="${#calendars.format(kulup.kulupTarih, 'M/dd/yyyy')}">Tarih</td>
+					<td th:text="${kulup.kulupDurum}">Durum</td>
+					<td th:text="${kulup.baskanAdSoyad}">Baskan</td>
+			<!-- td><a th:href="|/posts/byAuthor/${author.id}|">Posts By Author</a></td> -->
+				</tr>
+			</tbody>
+		</table>
 		
-		    <button class="btn btn-lg btn-primary btn-block" type="submit">Giris</button>
-		</form>
-		
-		</div>
+	</div>
 	
 	</div>
 
@@ -89,3 +102,6 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" ></script>
 </body>
 </html>
+
+
+	
