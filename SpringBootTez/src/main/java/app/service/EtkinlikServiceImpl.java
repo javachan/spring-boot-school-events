@@ -41,6 +41,12 @@ public class EtkinlikServiceImpl implements EtkinlikService {
 		etkinlikDAO.deleteEtkinlik(id);
 		
 	}
+
+	@Override
+	public List<Etkinlik> getEtkinlikById(int id) {
+		
+		return etkinlikDAO.getEtkinlikById(id);
+	}
 	
 	
 	

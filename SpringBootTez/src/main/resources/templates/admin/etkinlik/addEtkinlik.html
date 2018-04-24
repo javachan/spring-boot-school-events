@@ -78,9 +78,6 @@
 		
 		<div class="col-md-12">
 	
-		<h2>Etkinlik Ekle</h2>
-		<br/>
-
 		<form class="form-horizontal" th:object="${etkinlik}" th:action="@{/admin/etkinlik/save}" method="post">
 			<input type="hidden" th:field="*{id}" />
 			<div class="form-group">
@@ -98,7 +95,7 @@
 			</div>
 			
 		   <div class="form-group">
-		    	<label class="col-sm-2 control-label">Durum</label>
+		    	<label class="col-sm-2 control-label">Durum (Aktif/Pasif)</label>
 		    	<div class="col-md-6">
 					<div class="checkbox">
 					  <label>
@@ -128,7 +125,7 @@
 		   <tr>
              <td>
                <th:block th:each="konusmaci : ${konusmacilar}">
-                <input type="checkbox" th:field="*{konusmaci}" name="konusmaci" th:value="${konusmaci.konusmaciId}"/>
+                <input type="checkbox" th:field="*{konusmaci}" name="konusmaci" th:value="${konusmaci.konusmaciAdSoyad}"/>
                 <label th:text="${konusmaci.konusmaciAdSoyad}"></label>
                </th:block>
              </td>
@@ -139,23 +136,27 @@
 		 <div class="form-group">
     	   	<label class="col-sm-2 control-label">Kulup</label>
 	         	<div class="col-md-6">
-					<div class="checkbox">
-					  <label>
+					
+					 <label>
 					  <select class="form-control" th:field="*{kulupAd}" required="true">
 						<option value="">Kulup Sec</option>
 						<option th:each="kulup : ${kulupler}" th:value="${kulup.kulupAd}" th:text="${kulup.kulupAd}" >Kulupler</option>
 						 </select>
-					  </label>
-					</div>    		
+					 </label>
+				 		
 		    	</div>
+		    	
 		   </div>
-		
-			<button type="submit" class="btn btn-default">Ekle</button>
+		<div align="center"  class="col-md-9">
+		    	<button type="submit" class="btn btn-primary">Ekle</button>
+		    	
+		  </div>
+			
 		</form>
 		
 	</div>
 	
-	</div>
+</div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" ></script>

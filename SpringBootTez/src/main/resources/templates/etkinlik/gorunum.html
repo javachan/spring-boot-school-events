@@ -7,7 +7,7 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title>Dumlupinar University</title>
+<title>Dumlupinar University</title>
 	
 	<link rel="stylesheet" href="../static/css/blog.css" th:href="@{/css/blog.css}"/>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
@@ -19,7 +19,9 @@
 <body>
 
 	<div class="container">
-  		<nav class="navbar navbar-default">
+  		<div align="center"><a href="/"><img th:src="@{/image/logoSiyah.jpg}"/></a> 
+  		</div>
+  		  		<nav class="navbar navbar-default">
 		    <div class="container-fluid">
 		        <div class="navbar-header">
 		            <a class="navbar-brand" href="/">Ogrenci Kuluplerine Hosgeldin!</a>
@@ -77,57 +79,31 @@
 		</nav>	
 		
 		<div class="col-md-12">
-	
-		<form class="form-horizontal" th:object="${konusmaci}" th:action="@{/admin/konusmaci/save}" method="post">
-			<input type="hidden" th:field="*{konusmaciId}" />
-			<div class="form-group">
-				<label class="col-sm-2 control-label">Ad Soyad</label>
-				<div class="col-md-6">
-					<input type="text" class="form-control" th:field="*{konusmaciAdSoyad}" required="true" />
-				</div>
-			</div>
-			<div class="form-group">
-		    	<label class="col-sm-2 control-label">Telefon</label>
-		    	<div class="col-md-6">
-		    		<input type="text" class="form-control" th:field="*{konusmaciTelefon}" required="true"  />
-		    	</div>
-		  	</div>
-		
-			<div class="form-group">
-		    	<label class="col-sm-2 control-label">Mail</label>
-		    	<div class="col-md-6">
-		    		<input type="text" class="form-control" th:field="*{konusmaciMail}" required="true"  />
-		    	</div>
-		  	</div>
-		  	
-		  	<div class="form-group">
-				<label class="col-sm-2 control-label">Icerik</label>
-				<div class="col-md-6">
-					<textarea class="form-control" rows="3" th:field="*{konusmaciIcerik}" required="true" >icerik</textarea>
-				</div>
-			</div>
-			
-		<div class="form-group">
-    	   	<label class="col-sm-2 control-label">Kulup</label>
-	         	<div class="col-md-6">
-					
-					  <label>
-					  <select class="form-control" th:field="*{konusmaciKulup}" required="true">
-						<option value="">Kulup Sec</option>
-						<option th:each="kulup : ${kulupler}" th:value="${kulup.kulupAd}" th:text="${kulup.kulupAd}" >Kulupler</option>
-						 </select>
-					  </label>
-					   		
-		    	</div>
-		   </div>
-		
-			<div align="center"  class="col-md-9">
-		    	<button type="submit" class="btn btn-primary">Ekle</button>
-		    	
-		   </div>
-		   
-		</form>
-		
+			<h2> <img  th:src="@{/image/events.png}"/></h2>
+		<br/>
+				
+	    <article  th:each="etkinlik : ${etkinlikler}">
+			<header>
+			<h3 th:text="${etkinlik.ad}">Etkinlik</h3>
+				<h3 th:text="${etkinlik.kulupAd}">Kulup</h3>
+				<p th:text="${#calendars.format(etkinlik.tarih,'M/dd/yyyy')}">Tarih</p>
+					<p th:text="${etkinlik.adres}">Adres</p>
+						<p th:text="${etkinlik.konusmaci}">Konusmaci</p>
+			</header>
+			<section th:utext="${etkinlik.icerik}">
+				icerik
+			</section>
+			<footer>
+			</br>
+				<a th:href="|@{/etkinlikler/liste/}|">Geri Don</a>
+				<!-- <address>
+					Posted By <a th:href="|mailto:${post.author.email}|"> <span th:text="|${post.author.firstName} ${post.author.lastName}|">author</span></a>
+				</address>
+				 -->
+			</footer>
+			<hr/>
+		</article>
+ 
 	</div>
 	
 	</div>
@@ -136,6 +112,3 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" ></script>
 </body>
 </html>
-
-
-	

@@ -75,6 +75,7 @@ public class AdminPostController {
 	public String createKonusmaci(Model model) {
 		model.addAttribute("konusmaci", new Konusmaci());
 		model.addAttribute("konusmacilar", konusmaciService.getKonusmacilar());
+		model.addAttribute("kulupler",  kulupActivityService.getKulupler());
 		return "admin/konusmaci/addKonusmaci";
 	}
 	

@@ -10,6 +10,8 @@ public interface EtkinlikService {
 	
 	public List<Etkinlik> getEtkinlikler();
 	
+	public List<Etkinlik> getEtkinlikById(int id);
+	
 	public Etkinlik getEtkinlik(int id);
 	
 	public void deleteEtkinlik(int id);

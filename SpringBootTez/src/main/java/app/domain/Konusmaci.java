@@ -28,6 +28,18 @@ public class Konusmaci {
 	@Column(name="konusmaciMail")
 	private String konusmaciMail;
 
+	@Column(name="konusmaciKulup")
+	private String konusmaciKulup;
+	
+	
+	public String getKonusmaciKulup() {
+		return konusmaciKulup;
+	}
+
+	public void setKonusmaciKulup(String konusmaciKulup) {
+		this.konusmaciKulup = konusmaciKulup;
+	}
+
 	public int getKonusmaciId() {
 		return konusmaciId;
 	}

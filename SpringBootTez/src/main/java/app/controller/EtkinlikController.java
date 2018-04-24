@@ -3,6 +3,7 @@ package app.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import app.service.EtkinlikService;
@@ -26,6 +27,11 @@ public class EtkinlikController {
 		return "etkinlik/liste";
 	}
 
+	@RequestMapping("/gorunum/{id}")
+	public String view(@PathVariable(value="id") int id, Model model){
+		model.addAttribute("etkinlikler", etkinlikService.getEtkinlikById(id));
+		return "etkinlik/gorunum";
+	}
 	
 
 }

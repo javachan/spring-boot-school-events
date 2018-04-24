@@ -55,4 +55,11 @@ public class EtkinlikDAOImpl implements EtkinlikDAO {
 		
 	}
 
+	@Override
+	public List<Etkinlik> getEtkinlikById(int id) {
+		TypedQuery<Etkinlik> query = entityManager.createQuery("Select e from Etkinlik e where e.id = :ID", Etkinlik.class)
+			.setParameter("ID", id);
+	return query.getResultList();
+	}
+
 }

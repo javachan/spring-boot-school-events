@@ -19,7 +19,8 @@
 <body>
 
 	<div class="container">
-  		
+  		<div align="center"> <a href="/"><img th:src="@{/image/logoSiyah.jpg}"/></a> 
+  		</div>
   		  		<nav class="navbar navbar-default">
 		    <div class="container-fluid">
 		        <div class="navbar-header">
@@ -79,7 +80,7 @@
 		
 		<div class="col-md-12">
 	
-		<h2>Baskanlar</h2>
+		<h2>Konusmacilar</h2>
 		<br/>
 
 	   	<table class="table table-striped">
@@ -87,17 +88,21 @@
 				<tr> 
 					<th>#</th> 
 					<th>Ad Soyad</th> 
-					<th>Telefon</th> 
+				<!-- 	<th>Telefon</th>  -->
 					<th>Email</th> 
+					<th>Icerik</th> 
+					<th>Kulup</th> 
 				
 				</tr> 
 			</thead>
 			<tbody>
-				<tr th:each="baskan, iterationStatus : ${baskanlar}">
+				<tr th:each="konusmaci, iterationStatus : ${konusmacilar}">
 					<td th:text="${iterationStatus.count}">1</td>
-					<td th:text="${baskan.baskanAdSoyad}">Ad Soyad</td>
-					<td th:text="${baskan.baskanTelefon}">Telefon</td>
-					<td th:text="${baskan.baskanMail}">Email</td>
+					<td th:text="${konusmaci.konusmaciAdSoyad}">Ad Soyad</td>
+				<!-- <td th:text="${konusmaci.konusmaciTelefon}">Telefon</td>  -->
+					<td th:text="${konusmaci.konusmaciMail}">Email</td>
+					<td th:text="${konusmaci.konusmaciIcerik}">Icerik</td>
+					<td th:text="${konusmaci.konusmaciKulup}">Kulup</td>
 			<!-- td><a th:href="|/posts/byAuthor/${author.id}|">Posts By Author</a></td> -->
 				</tr>
 			</tbody>

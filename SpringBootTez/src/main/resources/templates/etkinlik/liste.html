@@ -19,7 +19,8 @@
 <body>
 
 	<div class="container">
-  		
+  		<div align="center"><a href="/"><img th:src="@{/image/logoSiyah.jpg}"/></a> 
+  		</div>
   		  		<nav class="navbar navbar-default">
 		    <div class="container-fluid">
 		        <div class="navbar-header">
@@ -79,30 +80,64 @@
 		
 		<div class="col-md-12">
 	
-		<h2>Baskanlar</h2>
+		<h2> <img  th:src="@{/image/events.png}"/></h2>
 		<br/>
-
+<!-- 
 	   	<table class="table table-striped">
 			<thead> 
 				<tr> 
 					<th>#</th> 
-					<th>Ad Soyad</th> 
-					<th>Telefon</th> 
-					<th>Email</th> 
+					<th>Etkinlik Ad</th> 
+					<th>Tarih</th> 
+					<th>Adres</th> 
+					<th>Durum</th> 
+					<th>Kulup</th> 
+					<th>Konusmaci</th> 
+				 <th>Icerik</th> 
+				
 				
 				</tr> 
 			</thead>
 			<tbody>
-				<tr th:each="baskan, iterationStatus : ${baskanlar}">
+				<tr th:each="etkinlik, iterationStatus : ${etkinlikler}">
 					<td th:text="${iterationStatus.count}">1</td>
-					<td th:text="${baskan.baskanAdSoyad}">Ad Soyad</td>
-					<td th:text="${baskan.baskanTelefon}">Telefon</td>
-					<td th:text="${baskan.baskanMail}">Email</td>
-			<!-- td><a th:href="|/posts/byAuthor/${author.id}|">Posts By Author</a></td> -->
+					<td th:text="${etkinlik.ad}">Etkinlik Ad</td>
+					<td th:text="${#calendars.format(etkinlik.tarih, 'M/dd/yyyy')}">Tarih</td>
+					<td th:text="${etkinlik.adres}">Adres</td>
+					<td th:text="${etkinlik.durum}">Durum</td>
+					<td th:text="${etkinlik.kulupAd}">Kulup</td>
+					<td th:text="${etkinlik.konusmaci}">Konusmaci</td>
+				<td th:text="${etkinlik.icerik}">Icerik</td>   
+			 td><a th:href="|/posts/byAuthor/${author.id}|">Posts By Author</a></td> 
 				</tr>
 			</tbody>
 		</table>
+-->	  <article  th:each="etkinlik : ${etkinlikler}" >
+	
+			<header>
+			    <h2 th:text="${etkinlik.ad}">Etkinlik Ad</h2>
+				<p th:text="${#calendars.format(etkinlik.tarih, 'M/dd/yyyy')}">Tarih</p>
+				<p th:text="${etkinlik.durum}">Durum</p>
+				<p th:text="${etkinlik.adres}">Adres</p>
+				<p th:text="${etkinlik.kulupAd}">Kulup</p>
+				<p th:text="${etkinlik.konusmaci}">Konusmaci</p>
+			</header>
+		<!--  	<section th:utext="${etkinlik.icerik}">
+				Icerik
+			</section>
+		-->
+			<footer>
+			 	<a th:href="|@{/etkinlikler/gorunum/}${etkinlik.id}|">Devamini Oku</a>
+			<!--	<address>
+					Posted By <a th:href="|mailto:${post.author.email}|"> <span th:text="|${post.author.firstName} ${post.author.lastName}|">author</span></a>
+				</address>  -->
+			</footer>
+			<hr/>
 		
+		</article>	
+	   	<p th:if="${etkinlikler.size() == 0}">
+			<div class="alert alert-warning" role="alert">Tum Etkinlikler.</div>
+		</p>
 	</div>
 	
 	</div>
