@@ -1,5 +1,6 @@
 package app.domain;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -42,12 +43,14 @@ public class Kulup {
 	@Column(name="kulupTarih")
 	private Date kulupTarih;
 	
+	
 	@Column(name="kulupDurum")
 	private Boolean kulupDurum;
 	
 	@Column(name="baskanAdSoyad")
 	private String baskanAdSoyad;
 
+	
 	public String getBaskanAdSoyad() {
 		return baskanAdSoyad;
 	}
@@ -55,9 +58,11 @@ public class Kulup {
 		this.baskanAdSoyad = baskanAdSoyad;
 	}
 	
+	
 	public int getKulupId() {
 		return kulupId;
 	}
+	
 	public void setKulupId(int kulupId) {
 		this.kulupId = kulupId;
 	}

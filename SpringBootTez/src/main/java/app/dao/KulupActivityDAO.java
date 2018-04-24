@@ -13,6 +13,8 @@ public interface KulupActivityDAO{
 	
 	public List<Kulup> getKulupler();
 	
+	//public List<Kulup> getKuluplerById(int kulupId);
+	
 	public Kulup getKulup(int kulupId);
 	
 	public void deleteKulup(int kulupId);

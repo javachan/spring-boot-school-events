@@ -13,5 +13,5 @@ public interface BaskanActivityDAO {
 	public Baskan getBaskan(int baskanId);
 	
 	public void deleteBaskan(int baskanId);
-
+	
 }

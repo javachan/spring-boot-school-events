@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import app.domain.Baskan;
+import app.domain.Kulup;
 
 
 @Repository
@@ -64,5 +65,7 @@ public class BaskanActivityDAOImpl implements BaskanActivityDAO{
 				entityManager.getTransaction().commit();
 		    }
 	}
+	
+	
 
 }

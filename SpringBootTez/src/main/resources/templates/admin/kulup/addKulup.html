@@ -19,7 +19,7 @@
 <body>
 
 	<div class="container">
-  		<nav class="navbar navbar-default">
+  	  		<nav class="navbar navbar-default">
 		    <div class="container-fluid">
 		        <div class="navbar-header">
 		            <a class="navbar-brand" href="/">Ogrenci Kuluplerine Hosgeldin!</a>
@@ -39,11 +39,25 @@
 				                <li><a href="/baskanlar/liste">Liste</a></li>
 				            </ul>
 				        </li>
+				          <li class="dropdown" th:class="${controllerName == 'Konusmaci'} ? 'dropdown active' : 'dropdown'">
+				            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Konusmacilar<span class="caret"></span></a>
+				            <ul class="dropdown-menu">
+				                <li><a href="/konusmacilar/liste">Liste</a></li>
+				            </ul>
+				        </li>
+				          <li class="dropdown" th:class="${controllerName == 'Etkinlik'} ? 'dropdown active' : 'dropdown'">
+				            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Etkinlikler<span class="caret"></span></a>
+				            <ul class="dropdown-menu">
+				                <li><a href="/etkinlikler/liste">Liste</a></li>
+				            </ul>
+				        </li>
 						<li class="dropdown" th:class="${controllerName == 'AdminPost'} ? 'dropdown active' : 'dropdown'" sec:authorize="hasRole('ROLE_ADMIN')">
 				            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
 				            <ul class="dropdown-menu">
 				                <li><a href="/admin/kulupler/">Kulup Ekle</a></li>
-				                <li><a href="/admin/baskanlar/">Baskan Ekle</a></li>				                
+				                <li><a href="/admin/baskanlar/">Baskan Ekle</a></li>
+				                 <li><a href="/admin/konusmacilar/">Konusmaci Ekle</a></li>
+				                <li><a href="/admin/etkinlikler/">Etkinlik Ekle</a></li>				                
 				            </ul>
 				        </li>					        
 				    </ul>
@@ -61,7 +75,6 @@
 				</div>
 		    </div>
 		</nav>	
-		
 		<div class="col-md-12">
 	
 		<h2>Kulup Ekle</h2>
@@ -100,7 +113,7 @@
 			  	
 			 <div class="form-group">
 		    	<label class="col-sm-2 control-label">Durum</label>
-		    	<div class="col-md-10">
+		    	<div class="col-md-6">
 					<div class="checkbox">
 					  <label>
 					    <input type="checkbox" th:field="*{kulupDurum}" required="true" />
@@ -109,20 +122,22 @@
 		    	</div>
 		  	</div>	
 		
-			
-			<div class="form-group">
+		 <div class="form-group">
 		    	<label class="col-sm-2 control-label">Baskan</label>
 		    	<div class="col-md-6">
-		    		<!-- loop over available  authors -->
-					<select class="form-control" th:field="*{baskanAdSoyad}" required="true">
+					<div class="checkbox">
+					  <label>
+					  <select class="form-control" th:field="*{baskanAdSoyad}" required="true">
 						<option value="">Baskan Sec</option>
 						<option th:each="baskan : ${baskanlar}" th:value="${baskan.baskanAdSoyad}" th:text="${baskan.baskanAdSoyad}" >Baskanlar</option>
 					
 					 </select>
-					
+					  </label>
+					</div>    		
 		    	</div>
-		  	</div>	
+		  </div>
 			
+				
 			<button type="submit" class="btn btn-default">Ekle</button>
 		</form>
 		

@@ -96,6 +96,13 @@ public class KulupActivityDAOImpl implements KulupActivityDAO {
 		
 
 	}
+
+	//@Override
+	//public List<Kulup> getKuluplerById(int kulupId) {
+		//TypedQuery<Kulup> query = entityManager.createQuery("Select e from Kulup e where e.kulupId = :ID", Kulup.class)
+			//	.setParameter("ID", kulupId);
+		//return query.getResultList();
+	//}
 	
 
 }

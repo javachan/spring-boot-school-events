@@ -81,27 +81,34 @@
 		<h2>Baskan Ekle</h2>
 		<br/>
 
-		<form class="form-horizontal" th:object="${baskan}" th:action="@{/admin/baskan/save}" method="post">
-			<input type="hidden" th:field="*{baskanId}" />
+		<form class="form-horizontal" th:object="${konusmaci}" th:action="@{/admin/konusmaci/save}" method="post">
+			<input type="hidden" th:field="*{konusmaciId}" />
 			<div class="form-group">
 				<label class="col-sm-2 control-label">Ad Soyad</label>
 				<div class="col-md-6">
-					<input type="text" class="form-control" th:field="*{baskanAdSoyad}" required="true" />
+					<input type="text" class="form-control" th:field="*{konusmaciAdSoyad}" required="true" />
 				</div>
 			</div>
 			<div class="form-group">
 		    	<label class="col-sm-2 control-label">Telefon</label>
 		    	<div class="col-md-6">
-		    		<input type="text" class="form-control" th:field="*{baskanTelefon}" required="true"  />
+		    		<input type="text" class="form-control" th:field="*{konusmaciTelefon}" required="true"  />
 		    	</div>
 		  	</div>
 		
 			<div class="form-group">
-		    	<label class="col-sm-2 control-label">Baskan Mail</label>
+		    	<label class="col-sm-2 control-label">Mail</label>
 		    	<div class="col-md-6">
-		    		<input type="text" class="form-control" th:field="*{baskanMail}" required="true"  />
+		    		<input type="text" class="form-control" th:field="*{konusmaciMail}" required="true"  />
 		    	</div>
 		  	</div>
+		  	
+		  	<div class="form-group">
+				<label class="col-sm-2 control-label">Icerik</label>
+				<div class="col-md-6">
+					<textarea class="form-control" rows="3" th:field="*{konusmaciIcerik}" required="true" >icerik</textarea>
+				</div>
+			</div>
 		
 			<button type="submit" class="btn btn-default">Ekle</button>
 		</form>
