@@ -29,13 +29,13 @@
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				    <ul class="nav navbar-nav">
 				        <li class="" th:class="${controllerName == 'Home'} ? 'dropdown active' : 'dropdown'"><a href="/">Anasayfa</a></li>
-				        <li class="dropdown" th:class="${controllerName == 'Kulup'} ? 'dropdown active' : 'dropdown'">
+				        <li class="dropdown" th:class="${controllerName == 'KulupActivity'} ? 'dropdown active' : 'dropdown'">
 				            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Kulupler<span class="caret"></span></a>
 				            <ul class="dropdown-menu">
 				                <li><a href="/kulupler/liste">Liste</a></li>
 				            </ul>
 				        </li>
-				        <li class="dropdown" th:class="${controllerName == 'Baskan'} ? 'dropdown active' : 'dropdown'">
+				        <li class="dropdown" th:class="${controllerName == 'BaskanActivity'} ? 'dropdown active' : 'dropdown'">
 				            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Baskanlar<span class="caret"></span></a>
 				            <ul class="dropdown-menu">
 				                <li><a href="/baskanlar/liste">Liste</a></li>
@@ -115,7 +115,7 @@
 -->	  <article  th:each="etkinlik : ${etkinlikler}" >
 	
 			<header>
-			    <h2 th:text="${etkinlik.ad}">Etkinlik Ad</h2>
+			   	<h2><a th:href="|@{/etkinlikler/gorunum/}${etkinlik.id}|" th:text="${etkinlik.ad}">Etkinlik Ad</a></h2>
 				<p th:text="${#calendars.format(etkinlik.tarih, 'M/dd/yyyy')}">Tarih</p>
 				<p th:text="${etkinlik.durum}">Durum</p>
 				<p th:text="${etkinlik.adres}">Adres</p>
@@ -127,7 +127,7 @@
 			</section>
 		-->
 			<footer>
-			 	<a th:href="|@{/etkinlikler/gorunum/}${etkinlik.id}|">Devamini Oku</a>
+			
 			<!--	<address>
 					Posted By <a th:href="|mailto:${post.author.email}|"> <span th:text="|${post.author.firstName} ${post.author.lastName}|">author</span></a>
 				</address>  -->

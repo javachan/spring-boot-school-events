@@ -19,7 +19,7 @@ public class Konusmaci {
 	@Column(name="konusmaciAdSoyad")
 	private String konusmaciAdSoyad;
 	
-	@Column(name="konusmaciIcerik")
+	@Column(name="konusmaciIcerik",columnDefinition="TEXT")
 	private String konusmaciIcerik;
 	
 	@Column(name="konusmaciTelefon")

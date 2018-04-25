@@ -53,7 +53,7 @@ public class AdminPostController {
 	@RequestMapping( value = "/admin/kulup/save", method = RequestMethod.POST )
 	public ModelAndView saveKulup(Kulup kulup,BindingResult bindingResult){
 		Kulup savedKulup = kulupActivityService.addKulup(kulup);
-		return new ModelAndView("redirect:/admin/kulup/" + savedKulup.getKulupId());
+		return new ModelAndView("admin/ayar/bilgi");
 	}
 	
 	@RequestMapping("/admin/baskanlar")
@@ -67,7 +67,7 @@ public class AdminPostController {
 	@RequestMapping( value = "/admin/baskan/save", method = RequestMethod.POST )
 	public String saveBaskan(Baskan baskan) {
 		Baskan savedBaskan = baskanActivityService.addBaskan(baskan);
-		return "redirect:/admin/baskan/" + savedBaskan.getBaskanId();
+		return "admin/ayar/bilgi";
 	}
 	
 	
@@ -80,9 +80,9 @@ public class AdminPostController {
 	}
 	
 	@RequestMapping( value = "/admin/konusmaci/save", method = RequestMethod.POST )
-	public String saveKonusmaci(Konusmaci konusmaci) {
+	public ModelAndView saveKonusmaci(Konusmaci konusmaci,BindingResult bindingResult) {
 		Konusmaci savedKonusmaci = konusmaciService.addKonusmaci(konusmaci);
-		return "redirect:/admin/konusmaci/" + savedKonusmaci.getKonusmaciId();
+		return new ModelAndView("admin/ayar/bilgi");
 	}
 	
 	@RequestMapping("/admin/etkinlikler")
@@ -97,6 +97,6 @@ public class AdminPostController {
 	@RequestMapping( value = "/admin/etkinlik/save", method = RequestMethod.POST )
 	public String saveEtkinlik(Etkinlik etkinlik) {
 		Etkinlik savedEtkinlik = etkinlikService.addEtkinlik(etkinlik);
-		return "redirect:/admin/etkinlik/" + savedEtkinlik.getId();
+		return "admin/ayar/bilgi";
 	}
 }

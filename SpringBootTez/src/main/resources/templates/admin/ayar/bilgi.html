@@ -2,22 +2,24 @@
 <html lang="en"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
-	layout:decorator="layouts/main">	
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-		<title>Dumlupinar University</title>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Dumlupinar University</title>
+	
 	<link rel="stylesheet" href="../static/css/blog.css" th:href="@{/css/blog.css}"/>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
 		
 	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css' />	
 	<link href='https://fonts.googleapis.com/css?family=Exo' rel='stylesheet' type='text/css' />
+
 </head>
 <body>
-		<div class="container">
-		 
-			<div align="center"> <a href="/"><img th:src="@{/image/logoSiyah.jpg}"/></a> 
-  		</div>
-		  		<nav class="navbar navbar-default">
+
+	<div class="container">
+  		<nav class="navbar navbar-default">
 		    <div class="container-fluid">
 		        <div class="navbar-header">
 		            <a class="navbar-brand" href="/">Ogrenci Kuluplerine Hosgeldin!</a>
@@ -73,20 +75,19 @@
 				</div>
 		    </div>
 		</nav>	
-	<div class="col-md-12">
-		<h2>Hakkimizda</h2>
-		<div class="row">
-			<div class="col-md-12">
- 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nisl libero, molestie vitae orci nec, luctus feugiat lorem. Maecenas eu massa non neque blandit tempor. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse id consectetur enim, et cursus nisl. Ut volutpat tempor accumsan. Aliquam et libero id nunc consectetur consequat at eu nibh. Nam ut justo in sapien fermentum facilisis.</p>
-				<p>Nullam sodales neque fringilla molestie facilisis. Morbi nisl neque, malesuada convallis felis vitae, pharetra maximus lorem. Fusce tincidunt sapien pretium leo scelerisque, eget egestas nisi dapibus. Sed ut magna egestas, condimentum ex vel, tempor justo. Duis ut magna et orci tincidunt vestibulum. Suspendisse sed enim nec mi convallis aliquam. Sed id urna ultricies dolor dictum vulputate. Nulla porta auctor sagittis.</p>
-			</div>
-		</div>
-	    
-	  
+		
+		<div align="center" class="col-md-12">
+	
+	<h2> <img  th:src="@{/image/basarili.jpg}"/> </h2>
 		
 	</div>
+	
 	</div>
-		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" ></script>
 </body>
 </html>
+
+
+	
