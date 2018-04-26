@@ -50,7 +50,7 @@
 				          <li class="dropdown" th:class="${controllerName == 'Etkinlik'} ? 'dropdown active' : 'dropdown'">
 				            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Etkinlikler<span class="caret"></span></a>
 				            <ul class="dropdown-menu">
-				                <li><a href="/etkinlikler/liste">Liste</a></li>
+				              <li><a href="/etkinlikler/liste">Liste</a></li>
 				            </ul>
 				        </li>
 						<li class="dropdown" th:class="${controllerName == 'AdminPost'} ? 'dropdown active' : 'dropdown'" sec:authorize="hasRole('ROLE_ADMIN')">
@@ -59,7 +59,8 @@
 				                <li><a href="/admin/kulupler/">Kulup Ekle</a></li>
 				                <li><a href="/admin/baskanlar/">Baskan Ekle</a></li>
 				                 <li><a href="/admin/konusmacilar/">Konusmaci Ekle</a></li>
-				                <li><a href="/admin/etkinlikler/">Etkinlik Ekle</a></li>				                
+				                <li><a href="/admin/etkinlikler/">Etkinlik Ekle</a></li>	
+				                  			                
 				            </ul>
 				        </li>					        
 				    </ul>
@@ -121,6 +122,7 @@
 				<p th:text="${etkinlik.adres}">Adres</p>
 				<p th:text="${etkinlik.kulupAd}">Kulup</p>
 				<p th:text="${etkinlik.konusmaci}">Konusmaci</p>
+				<p><a href="#" th:href="@{/admin/etkinlik/delete/} + ${etkinlik.id}">Sil</a></p>
 			</header>
 		<!--  	<section th:utext="${etkinlik.icerik}">
 				Icerik

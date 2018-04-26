@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import app.dao.KonusmaciDAO;
-import app.domain.Konusmaci;
+import app.domain.Konusmacim;
 
 @Service
 public class KonusmaciServiceImpl implements KonusmaciService {
@@ -17,19 +17,19 @@ public class KonusmaciServiceImpl implements KonusmaciService {
 	private KonusmaciDAO konusmaciDAO;
 
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
-	public Konusmaci addKonusmaci(Konusmaci konusmaci) {
+	public Konusmacim addKonusmaci(Konusmacim konusmacim) {
 		
-		return  konusmaciDAO.addKonusmaci(konusmaci);
+		return  konusmaciDAO.addKonusmaci(konusmacim);
 	}
 
 	@Override
-	public List<Konusmaci> getKonusmacilar() {
+	public List<Konusmacim> getKonusmacilar() {
 		
 		return konusmaciDAO.getKonusmacilar();
 	}
 
 	@Override
-	public Konusmaci getKonusmaci(int konusmaciId) {
+	public Konusmacim getKonusmaci(int konusmaciId) {
 		
 		return konusmaciDAO.getKonusmaci(konusmaciId);
 	}
@@ -39,6 +39,12 @@ public class KonusmaciServiceImpl implements KonusmaciService {
 		
 		konusmaciDAO.deleteKonusmaci(konusmaciId);
 		
+	}
+
+	@Override
+	public List<Konusmacim> getKonusmaciById(int konusmaciId) {
+		
+		return konusmaciDAO.getKonusmaciById(konusmaciId);
 	}
 
 	

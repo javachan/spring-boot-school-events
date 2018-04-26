@@ -36,9 +36,9 @@ public class EtkinlikServiceImpl implements EtkinlikService {
 	}
 
 	@Override
-	public void deleteEtkinlik(int id) {
+	public Etkinlik deleteEtkinlik(int id) {
 		
-		etkinlikDAO.deleteEtkinlik(id);
+		return etkinlikDAO.deleteEtkinlik(id);
 		
 	}
 

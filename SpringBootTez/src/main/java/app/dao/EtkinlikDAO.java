@@ -14,6 +14,6 @@ public interface EtkinlikDAO {
 	
 	public Etkinlik getEtkinlik(int id);
 	
-	public void deleteEtkinlik(int id);
+	public Etkinlik deleteEtkinlik(int id);
 
 }

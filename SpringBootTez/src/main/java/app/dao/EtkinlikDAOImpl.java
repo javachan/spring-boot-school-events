@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import app.domain.Etkinlik;
-import app.domain.Konusmaci;
+import app.domain.Konusmacim;
 
 @Repository
 public class EtkinlikDAOImpl implements EtkinlikDAO {
@@ -43,7 +43,7 @@ public class EtkinlikDAOImpl implements EtkinlikDAO {
 	}
 
 	@Override
-	public void deleteEtkinlik(int id) {
+	public Etkinlik deleteEtkinlik(int id) {
 		
 		Etkinlik etkinlik = getEtkinlik(id);
 		
@@ -52,6 +52,7 @@ public class EtkinlikDAOImpl implements EtkinlikDAO {
 			entityManager.remove(etkinlik);
 			entityManager.getTransaction().commit();
 		}
+		return etkinlik;
 		
 	}
 

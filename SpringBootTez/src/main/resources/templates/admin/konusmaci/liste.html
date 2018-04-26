@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="tr"
+<html lang="en"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
@@ -7,21 +7,21 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title>Dumlupinar University</title>
+<title>Dumlupinar University</title>
 	
-
+	<link rel="stylesheet" href="../static/css/blog.css" th:href="@{/css/blog.css}"/>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
 		
 	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css' />	
 	<link href='https://fonts.googleapis.com/css?family=Exo' rel='stylesheet' type='text/css' />
-	
+
 </head>
 <body>
 
 	<div class="container">
-  		 <div align="center"><a href="/"><img th:src="@{/image/logoSiyah.jpg}"/></a> 
+  		<div align="center"> <a href="/"><img th:src="@{/image/logoSiyah.jpg}"/></a> 
   		</div>
-		  		<nav class="navbar navbar-default">
+  		  		<nav class="navbar navbar-default">
 		    <div class="container-fluid">
 		        <div class="navbar-header">
 		            <a class="navbar-brand" href="/">Ogrenci Kuluplerine Hosgeldin!</a>
@@ -44,7 +44,7 @@
 				          <li class="dropdown" th:class="${controllerName == 'Konusmaci'} ? 'dropdown active' : 'dropdown'">
 				            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Konusmacilar<span class="caret"></span></a>
 				            <ul class="dropdown-menu">
-				           
+				              
 				            </ul>
 				        </li>
 				          <li class="dropdown" th:class="${controllerName == 'Etkinlik'} ? 'dropdown active' : 'dropdown'">
@@ -60,7 +60,7 @@
 				                <li><a href="/admin/baskanlar/">Baskan Ekle</a></li>
 				                 <li><a href="/admin/konusmacilar/">Konusmaci Ekle</a></li>
 				                <li><a href="/admin/etkinlikler/">Etkinlik Ekle</a></li>
-				                <li><a href="/admin/konusmacilar/liste">Konusmacilar</a></li>				                
+				                 <li><a href="/admin/konusmacilar/liste">Konusmacilar</a></li>				                
 				            </ul>
 				        </li>					        
 				    </ul>
@@ -79,24 +79,39 @@
 		    </div>
 		</nav>	
 		
-		<div class="col-md-3">
-		<form name="f" th:action="@{/login}" method="post" class="form-signin">
-		    <h2 class="form-signin-heading">Lutfen Giris Yapin!</h2>
-            <div th:if="${param.error}" class="alert alert-danger">    
-                Gecersiz Kullanici
-            </div>
-            <div th:if="${param.logout}" class="alert alert-success"> 
-               Cikis Basarili
-            </div>		    
-		    <label for="username" >Kullanici Adi</label>
-		    <input type="text" id="username" name="username" class="form-control" placeholder="kullanici adi zorunlu" required="true" />
-		    <label for="password" >Sifre</label>
-		    <input type="password" id="password" name="password" class="form-control" placeholder="sifre zorunlu" required="true" /> </br>
+		<div class="col-md-12">
+	
+		<h2>Konusmacilar</h2>
+		<br/>
+
+	   	<table class="table table-striped">
+			<thead> 
+				<tr> 
+					<th>#</th> 
+					<th>Ad Soyad</th> 
+				<!-- 	<th>Telefon</th>  -->
+					<th>Email</th> 
+					<th>Icerik</th> 
+					<th>Kulup</th> 
+					<th>Duzenle</th> 
+				
+				</tr> 
+			</thead>
+			<tbody>
+				<tr th:each="konusmaci, iterationStatus : ${konusmacilar}">
+					<td th:text="${iterationStatus.count}">1</td>
+					<td th:text="${konusmaci.konusmaciAdSoyad}">Ad Soyad</td>
+				<!-- <td th:text="${konusmaci.konusmaciTelefon}">Telefon</td>  -->
+					<td th:text="${konusmaci.konusmaciMail}">Email</td>
+					<td th:text="${konusmaci.konusmaciIcerik}">Icerik</td>
+					<td th:text="${konusmaci.konusmaciKulup}">Kulup</td>
+					<td><a href="#" th:href="@{/admin/konusmaci/edit/} + ${konusmaci.konusmaciId}">Duzenle</a></td>
+			<!-- td><a th:href="|/posts/byAuthor/${author.id}|">Posts By Author</a></td> -->
+				</tr>
+			</tbody>
+		</table>
 		
-		    <button class="btn btn-lg btn-primary btn-block" type="submit">Giris</button>
-		</form>
-		
-		</div>
+	</div>
 	
 	</div>
 
@@ -104,3 +119,6 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" ></script>
 </body>
 </html>
+
+
+	

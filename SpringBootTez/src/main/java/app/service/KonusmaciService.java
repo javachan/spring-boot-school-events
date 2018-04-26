@@ -2,15 +2,17 @@ package app.service;
 
 import java.util.List;
 
-import app.domain.Konusmaci;
+import app.domain.Konusmacim;
 
 public interface KonusmaciService {
 	
-    public Konusmaci addKonusmaci(Konusmaci konusmaci);
+    public Konusmacim addKonusmaci(Konusmacim konusmacim);
 	
-	public List<Konusmaci> getKonusmacilar();
+	public List<Konusmacim> getKonusmacilar();
 	
-	public Konusmaci getKonusmaci(int konusmaciId);
+	public List<Konusmacim> getKonusmaciById(int konusmaciId);
+	
+	public Konusmacim getKonusmaci(int konusmaciId);
 	
 	public void deleteKonusmaci(int konusmaciId);
 

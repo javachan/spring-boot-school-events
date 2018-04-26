@@ -19,11 +19,11 @@ public class KonusmaciController {
 		this.konusmaciService = konusmaciService;
 	}
 	
-	@RequestMapping("/liste")
-	public String list(Model model){
-		model.addAttribute("konusmacilar", konusmaciService.getKonusmacilar());
-		return "konusmaci/liste";
-	}
+	//@RequestMapping("/liste")
+	//public String list(Model model){
+		//model.addAttribute("konusmacilar", konusmaciService.getKonusmacilar());
+		//return "konusmaci/liste";
+	//}
 
 	
 

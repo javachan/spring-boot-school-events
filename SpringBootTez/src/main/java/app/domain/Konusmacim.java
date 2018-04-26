@@ -9,11 +9,12 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name="konusmaci")
-public class Konusmaci {
+@Table(name="konusmacim")
+public class Konusmacim {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.TABLE)
+	@Column(name="konusmaciId")
 	private int konusmaciId;
 	
 	@Column(name="konusmaciAdSoyad")
@@ -39,6 +40,7 @@ public class Konusmaci {
 	public void setKonusmaciKulup(String konusmaciKulup) {
 		this.konusmaciKulup = konusmaciKulup;
 	}
+
 
 	public int getKonusmaciId() {
 		return konusmaciId;
@@ -81,15 +83,26 @@ public class Konusmaci {
 		this.konusmaciMail = konusmaciMail;
 	}
 
-	public Konusmaci(String konusmaciAdSoyad, String konusmaciIcerik, String konusmaciTelefon, String konusmaciMail) {
+	public Konusmacim(String konusmaciAdSoyad, String konusmaciIcerik, String konusmaciTelefon, String konusmaciMail) {
 		super();
 		this.konusmaciAdSoyad = konusmaciAdSoyad;
 		this.konusmaciIcerik = konusmaciIcerik;
 		this.konusmaciTelefon = konusmaciTelefon;
 		this.konusmaciMail = konusmaciMail;
 	}
+	
 
-	public Konusmaci() {
+	public Konusmacim(int konusmaciId, String konusmaciAdSoyad, String konusmaciIcerik, String konusmaciTelefon,
+			String konusmaciMail) {
+		super();
+		this.konusmaciId = konusmaciId;
+		this.konusmaciAdSoyad = konusmaciAdSoyad;
+		this.konusmaciIcerik = konusmaciIcerik;
+		this.konusmaciTelefon = konusmaciTelefon;
+		this.konusmaciMail = konusmaciMail;
+	}
+
+	public Konusmacim() {
 		super();
 	}
 	

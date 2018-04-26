@@ -10,7 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import app.domain.Baskan;
-import app.domain.Konusmaci;
+import app.domain.Etkinlik;
+import app.domain.Konusmacim;
 
 @Repository
 public class KonusmaciDAOImpl implements KonusmaciDAO {
@@ -23,37 +24,44 @@ public class KonusmaciDAOImpl implements KonusmaciDAO {
 	}
 
 	@Override
-	public Konusmaci addKonusmaci(Konusmaci konusmaci) {
+	public Konusmacim addKonusmaci(Konusmacim konusmacim) {
 		entityManager.getTransaction().begin();
-		entityManager.persist(konusmaci);
+		entityManager.persist(konusmacim);
 		entityManager.getTransaction().commit();
-		return konusmaci;
+		return konusmacim;
 	}
 
 	@Override
-	public List<Konusmaci> getKonusmacilar() {
-		TypedQuery<Konusmaci> query = entityManager.createQuery("Select e from Konusmaci e", Konusmaci.class);
+	public List<Konusmacim> getKonusmacilar() {
+		TypedQuery<Konusmacim> query = entityManager.createQuery("Select e from Konusmacim e", Konusmacim.class);
 		return query.getResultList();
 	}
 
 	@Override
-	public Konusmaci getKonusmaci(int konusmaciId) {
+	public Konusmacim getKonusmaci(int konusmaciId) {
 		
-		return entityManager.find(Konusmaci.class, konusmaciId);
+		return entityManager.find(Konusmacim.class, konusmaciId);
 	}
 
 	@Override
 	public void deleteKonusmaci(int konusmaciId) {
 	
-		Konusmaci konusmaci = getKonusmaci(konusmaciId);
+		Konusmacim konusmacim = getKonusmaci(konusmaciId);
 		
-		if(konusmaci != null){
+		if(konusmacim != null){
 			
 			entityManager.getTransaction().begin();
-			entityManager.remove(konusmaci);
+			entityManager.remove(konusmacim);
 			entityManager.getTransaction().commit();
 		}
 		
+	}
+
+	@Override
+	public List<Konusmacim> getKonusmaciById(int konusmaciId) {
+		TypedQuery<Konusmacim> query = entityManager.createQuery("Select e from Konusmacim e where e.konusmaciId = :ID", Konusmacim.class)
+				.setParameter("ID", konusmaciId);
+		return query.getResultList();
 	}
 
 	

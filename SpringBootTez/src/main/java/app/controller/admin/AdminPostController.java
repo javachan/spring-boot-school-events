@@ -9,13 +9,14 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import app.domain.Baskan;
 import app.domain.Etkinlik;
-import app.domain.Konusmaci;
+import app.domain.Konusmacim;
 import app.domain.Kulup;
 import app.service.BaskanActivityService;
 import app.service.EtkinlikService;
@@ -52,7 +53,7 @@ public class AdminPostController {
 
 	@RequestMapping( value = "/admin/kulup/save", method = RequestMethod.POST )
 	public ModelAndView saveKulup(Kulup kulup,BindingResult bindingResult){
-		Kulup savedKulup = kulupActivityService.addKulup(kulup);
+		kulupActivityService.addKulup(kulup);
 		return new ModelAndView("admin/ayar/bilgi");
 	}
 	
@@ -66,22 +67,22 @@ public class AdminPostController {
 	
 	@RequestMapping( value = "/admin/baskan/save", method = RequestMethod.POST )
 	public String saveBaskan(Baskan baskan) {
-		Baskan savedBaskan = baskanActivityService.addBaskan(baskan);
+		baskanActivityService.addBaskan(baskan);
 		return "admin/ayar/bilgi";
 	}
 	
 	
 	@RequestMapping("/admin/konusmacilar")
 	public String createKonusmaci(Model model) {
-		model.addAttribute("konusmaci", new Konusmaci());
+		model.addAttribute("konusmaci", new Konusmacim());
 		model.addAttribute("konusmacilar", konusmaciService.getKonusmacilar());
 		model.addAttribute("kulupler",  kulupActivityService.getKulupler());
 		return "admin/konusmaci/addKonusmaci";
 	}
 	
 	@RequestMapping( value = "/admin/konusmaci/save", method = RequestMethod.POST )
-	public ModelAndView saveKonusmaci(Konusmaci konusmaci,BindingResult bindingResult) {
-		Konusmaci savedKonusmaci = konusmaciService.addKonusmaci(konusmaci);
+	public ModelAndView saveKonusmaci(Konusmacim konusmacim,BindingResult bindingResult) {
+		konusmaciService.addKonusmaci(konusmacim);
 		return new ModelAndView("admin/ayar/bilgi");
 	}
 	
@@ -96,7 +97,27 @@ public class AdminPostController {
 	
 	@RequestMapping( value = "/admin/etkinlik/save", method = RequestMethod.POST )
 	public String saveEtkinlik(Etkinlik etkinlik) {
-		Etkinlik savedEtkinlik = etkinlikService.addEtkinlik(etkinlik);
+		etkinlikService.addEtkinlik(etkinlik);
 		return "admin/ayar/bilgi";
 	}
+	
+	@RequestMapping( value = "/admin/etkinlik/delete/{id}",method = RequestMethod.GET)
+	public String editEtkinlik(@PathVariable(value="id") Integer id, Model model) {
+		etkinlikService.deleteEtkinlik(id);
+		return "admin/ayar/bilgi";
+	}
+	
+	@RequestMapping("/admin/konusmacilar/liste")
+	public String list(Model model){
+		model.addAttribute("konusmacilar", konusmaciService.getKonusmacilar());
+		return "admin/konusmaci/liste";
+	}
+
+	@RequestMapping("/admin/konusmaci/edit/{konusmaciId}")
+	public String editKonusmaci(@PathVariable Integer konusmaciId,Model model) {
+		model.addAttribute("konusmaci" , konusmaciService.getKonusmaciById(konusmaciId));
+		model.addAttribute("kulupler",  kulupActivityService.getKulupler());
+		return "admin/konusmaci/addKonusmaci";
+	}
+
 }
