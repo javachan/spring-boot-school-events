@@ -19,9 +19,7 @@
 <body>
 
 	<div class="container">
-	<div align="center"> <a href="/"><img th:src="@{/image/logoSiyah.jpg}"/></a> 
-  		</div>
-    <nav class="navbar navbar-default">
+  		  <nav class="navbar navbar-default">
 		    <div class="container-fluid">
 		        <div class="navbar-header">
 		            <a class="navbar-brand" href="/">Ogrenci Kuluplerine Hosgeldin!</a>
@@ -74,38 +72,47 @@
 				</div>
 		    </div>
 		</nav>	
-		
 		<div class="col-md-12">
 	
-		<h2>Kulupler</h2>
-		<br/>
 
-	   	<table class="table table-striped">
-			<thead> 
-				<tr> 
-					<th>#</th> 
-					<th>Ad</th> 
-					<th>Icerik</th> 
-					<th>Logo</th> 
-					<th>Tarih</th> 
-					<th>Durum</th> 
-					<th>Baskan</th> 
+		<form class="form-horizontal" th:object="${uye}" th:action="@{/admin/uye/save}" method="post">
+			<input type="hidden" th:field="*{id}" />
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Kullanici Adi</label>
+				<div class="col-md-6">
+					<input type="text" class="form-control" th:field="*{username}" required="true" />
+				</div>
+			</div>
+			<div class="form-group">
+		    	<label class="col-sm-2 control-label">Sifre</label>
+		    	<div class="col-md-6">
+		    		<input type="password" class="form-control" th:field="*{password}" required="true"  />
+		    	</div>
+		  	</div>
+		
+			<input type="hidden" th:field="*{role}" />
+			
+			 <div class="form-group">
+		    	<label class="col-sm-2 control-label">Baskan</label>
+		    	<div class="col-md-6">
 				
-				</tr> 
-			</thead>
-			<tbody>
-				<tr th:each="kulup, iterationStatus : ${kulupler}">
-					<td th:text="${iterationStatus.count}">1</td>
-					<td th:text="${kulup.kulupAd}">Ad</td>
-					<td th:text="${kulup.kulupIcerik}">Icerik</td>
-					<td><img width="200" height="130" th:src="@{${kulup.kulupLogo}}"/></td>
-					<td th:text="${#calendars.format(kulup.kulupTarih, 'M/dd/yyyy')}">Tarih</td>
-					<td th:text="${kulup.kulupDurum}">Durum</td>
-					<td th:text="${kulup.baskanAdSoyad}">Baskan</td>
-			<!-- td><a th:href="|/posts/byAuthor/${author.id}|">Posts By Author</a></td> -->
-				</tr>
-			</tbody>
-		</table>
+					  <label>
+					  <select class="form-control" th:field="*{baskanAdSoyad}" required="true">
+						<option value="">Baskan Sec</option>
+						<option th:each="baskan : ${baskanlar}" th:value="${baskan.baskanAdSoyad}" th:text="${baskan.baskanAdSoyad}" >Baskanlar</option>
+					
+					 </select>
+					  </label>
+				  		
+		    	</div>
+		  </div>
+			
+			<div align="center"  class="col-md-9">
+		    	<button type="submit" class="btn btn-primary">Ekle</button>
+		    	
+		    </div>
+		    
+		</form>
 		
 	</div>
 	

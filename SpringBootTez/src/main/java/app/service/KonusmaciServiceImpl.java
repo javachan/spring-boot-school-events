@@ -10,7 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 import app.dao.KonusmaciDAO;
 import app.domain.Konusmacim;
 
-@Service
+@Service("konusmaciService")
+@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 public class KonusmaciServiceImpl implements KonusmaciService {
 	
 	@Autowired

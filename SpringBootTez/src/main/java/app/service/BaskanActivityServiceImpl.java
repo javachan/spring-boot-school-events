@@ -18,7 +18,7 @@ public class BaskanActivityServiceImpl implements BaskanActivityService {
 	@Autowired
 	private BaskanActivityDAO baskanActivityDAO;
 	
-	 @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 	public Baskan addBaskan(Baskan baskan) {
 		
 		return baskanActivityDAO.addBaskan(baskan);

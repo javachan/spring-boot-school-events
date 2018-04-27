@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import app.dao.EtkinlikDAO;
 import app.domain.Etkinlik;
 
-@Service
+@Service("etkinlikService")
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 public class EtkinlikServiceImpl implements EtkinlikService {
 

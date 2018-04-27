@@ -7,7 +7,7 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title>Dumlupinar University</title>
+<title>Dumlupinar University</title>
 	
 	<link rel="stylesheet" href="../static/css/blog.css" th:href="@{/css/blog.css}"/>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
@@ -19,9 +19,9 @@
 <body>
 
 	<div class="container">
-	<div align="center"> <a href="/"><img th:src="@{/image/logoSiyah.jpg}"/></a> 
+  		<div align="center"> <a href="/"><img th:src="@{/image/logoSiyah.jpg}"/></a> 
   		</div>
-    <nav class="navbar navbar-default">
+  		    <nav class="navbar navbar-default">
 		    <div class="container-fluid">
 		        <div class="navbar-header">
 		            <a class="navbar-brand" href="/">Ogrenci Kuluplerine Hosgeldin!</a>
@@ -77,32 +77,33 @@
 		
 		<div class="col-md-12">
 	
-		<h2>Kulupler</h2>
+		<h2>Konusmacilar</h2>
 		<br/>
 
 	   	<table class="table table-striped">
 			<thead> 
 				<tr> 
 					<th>#</th> 
-					<th>Ad</th> 
-					<th>Icerik</th> 
-					<th>Logo</th> 
-					<th>Tarih</th> 
-					<th>Durum</th> 
+					<th>Kullanici Adi</th> 
+				<!-- 	<th>Telefon</th>  -->
+					<th>Sifre</th> 
 					<th>Baskan</th> 
+					 
+				<!-- <th>Duzenle</th>   -->
 				
 				</tr> 
 			</thead>
 			<tbody>
-				<tr th:each="kulup, iterationStatus : ${kulupler}">
+				<tr th:each="uye, iterationStatus : ${uyeler}">
 					<td th:text="${iterationStatus.count}">1</td>
-					<td th:text="${kulup.kulupAd}">Ad</td>
-					<td th:text="${kulup.kulupIcerik}">Icerik</td>
-					<td><img width="200" height="130" th:src="@{${kulup.kulupLogo}}"/></td>
-					<td th:text="${#calendars.format(kulup.kulupTarih, 'M/dd/yyyy')}">Tarih</td>
-					<td th:text="${kulup.kulupDurum}">Durum</td>
-					<td th:text="${kulup.baskanAdSoyad}">Baskan</td>
+					
+					<td th:text="${uye.username}">Ad Soyad</td>
+					<td th:password="${uye.password}">Sifre</td>
+					<td th:text="${uye.baskanAdSoyad}">Baskan</td>
+					
+			<!-- <td><a href="#" th:href="@{/admin/konusmaci/edit/} + ${konusmaci.konusmaciId}">Duzenle</a></td> -->
 			<!-- td><a th:href="|/posts/byAuthor/${author.id}|">Posts By Author</a></td> -->
+				
 				</tr>
 			</tbody>
 		</table>
@@ -115,6 +116,3 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" ></script>
 </body>
 </html>
-
-
-	

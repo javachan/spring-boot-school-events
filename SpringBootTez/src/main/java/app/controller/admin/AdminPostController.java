@@ -18,10 +18,12 @@ import app.domain.Baskan;
 import app.domain.Etkinlik;
 import app.domain.Konusmacim;
 import app.domain.Kulup;
+import app.domain.Login;
 import app.service.BaskanActivityService;
 import app.service.EtkinlikService;
 import app.service.KonusmaciService;
 import app.service.KulupActivityService;
+import app.service.LoginService;
 
 
 @Controller
@@ -32,15 +34,17 @@ public class AdminPostController {
 	private BaskanActivityService baskanActivityService;
 	private KonusmaciService konusmaciService;
 	private EtkinlikService etkinlikService;
+	private LoginService loginService;
 		
 	@Autowired
 	public AdminPostController(KulupActivityService kulupActivityService, BaskanActivityService baskanActivityService,
-			KonusmaciService konusmaciService, EtkinlikService etkinlikService) {
+			KonusmaciService konusmaciService, EtkinlikService etkinlikService, LoginService loginService) {
 		
 		this.kulupActivityService = kulupActivityService;
 		this.baskanActivityService = baskanActivityService;
 		this.konusmaciService = konusmaciService;
 		this.etkinlikService = etkinlikService;
+		this.loginService = loginService;
 	}
 
 	@RequestMapping("/admin/kulupler")
@@ -95,6 +99,7 @@ public class AdminPostController {
 		return new ModelAndView("admin/etkinlik/addEtkinlik",model);
 	}
 	
+
 	@RequestMapping( value = "/admin/etkinlik/save", method = RequestMethod.POST )
 	public String saveEtkinlik(Etkinlik etkinlik) {
 		etkinlikService.addEtkinlik(etkinlik);
@@ -108,7 +113,7 @@ public class AdminPostController {
 	}
 	
 	@RequestMapping("/admin/konusmacilar/liste")
-	public String list(Model model){
+	public String listKonusmaci(Model model){
 		model.addAttribute("konusmacilar", konusmaciService.getKonusmacilar());
 		return "admin/konusmaci/liste";
 	}
@@ -118,6 +123,27 @@ public class AdminPostController {
 		model.addAttribute("konusmaci" , konusmaciService.getKonusmaciById(konusmaciId));
 		model.addAttribute("kulupler",  kulupActivityService.getKulupler());
 		return "admin/konusmaci/addKonusmaci";
+	}
+
+	@RequestMapping("/admin/uye")
+	public String createUye(Model model) {
+		model.addAttribute("uye", new Login());
+		model.addAttribute("uyeler",loginService.getLogins());
+		model.addAttribute("baskanlar", baskanActivityService.getBaskanlar());
+		return "admin/uye/addUye";
+	}
+	
+	@RequestMapping( value = "/admin/uye/save", method = RequestMethod.POST )
+	public String saveUye(Login login) {
+		loginService.addLogin(login);
+		return "admin/ayar/bilgi";
+	}
+	
+	
+	@RequestMapping("/admin/uyeler/liste")
+	public String listUye(Model model){
+		model.addAttribute("uyeler", loginService.getLogins());
+		return "admin/uye/liste";
 	}
 
 }

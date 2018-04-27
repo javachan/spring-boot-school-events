@@ -1,16 +1,14 @@
 package app.dao;
 
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import app.domain.Etkinlik;
-import app.domain.Konusmacim;
+
 
 @Repository
 public class EtkinlikDAOImpl implements EtkinlikDAO {

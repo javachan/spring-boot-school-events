@@ -21,7 +21,7 @@
 	<div class="container">
   		<div align="center"><a href="/"><img th:src="@{/image/logoSiyah.jpg}"/></a> 
   		</div>
-  		  		<nav class="navbar navbar-default">
+  		  <nav class="navbar navbar-default">
 		    <div class="container-fluid">
 		        <div class="navbar-header">
 		            <a class="navbar-brand" href="/">Ogrenci Kuluplerine Hosgeldin!</a>
@@ -41,16 +41,10 @@
 				                <li><a href="/baskanlar/liste">Liste</a></li>
 				            </ul>
 				        </li>
-				          <li class="dropdown" th:class="${controllerName == 'Konusmaci'} ? 'dropdown active' : 'dropdown'">
-				            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Konusmacilar<span class="caret"></span></a>
-				            <ul class="dropdown-menu">
-				                <li><a href="/konusmacilar/liste">Liste</a></li>
-				            </ul>
-				        </li>
-				          <li class="dropdown" th:class="${controllerName == 'Etkinlik'} ? 'dropdown active' : 'dropdown'">
+				        <li class="dropdown" th:class="${controllerName == 'Etkinlik'} ? 'dropdown active' : 'dropdown'">
 				            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Etkinlikler<span class="caret"></span></a>
 				            <ul class="dropdown-menu">
-				                <li><a href="/etkinlikler/liste">Liste</a></li>
+				               <li><a href="/etkinlikler/liste">Liste</a></li>	
 				            </ul>
 				        </li>
 						<li class="dropdown" th:class="${controllerName == 'AdminPost'} ? 'dropdown active' : 'dropdown'" sec:authorize="hasRole('ROLE_ADMIN')">
@@ -59,7 +53,10 @@
 				                <li><a href="/admin/kulupler/">Kulup Ekle</a></li>
 				                <li><a href="/admin/baskanlar/">Baskan Ekle</a></li>
 				                 <li><a href="/admin/konusmacilar/">Konusmaci Ekle</a></li>
-				                <li><a href="/admin/etkinlikler/">Etkinlik Ekle</a></li>				                
+				                <li><a href="/admin/etkinlikler/">Etkinlik Ekle</a></li>
+				                 <li><a href="/admin/konusmacilar/liste">Konusmacilar</a></li>
+				                    <li><a href="/admin/uyeler/liste">Uyeler</a></li>
+				                 			                
 				            </ul>
 				        </li>					        
 				    </ul>
