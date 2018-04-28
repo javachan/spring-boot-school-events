@@ -7,7 +7,7 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Dumlupinar University</title>
+	<title>Dumlupinar University</title>
 	
 	<link rel="stylesheet" href="../static/css/blog.css" th:href="@{/css/blog.css}"/>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
@@ -19,7 +19,7 @@
 <body>
 
 	<div class="container">
-  		<div align="center"><a href="/"><img th:src="@{/image/logoSiyah.jpg}"/></a> 
+	<div align="center"> <a href="/"><img th:src="@{/image/logoSiyah.jpg}"/></a> 
   		</div>
  <nav class="navbar navbar-default">
 		    <div class="container-fluid">
@@ -85,25 +85,25 @@
 		</nav>	
 		<div class="col-md-12">
 	
-		<h2>Baskanlar</h2>
+		<h2>Kulupler</h2>
 		<br/>
 
 	   	<table class="table table-striped">
 			<thead> 
 				<tr> 
 					<th>#</th> 
-					<th>Ad Soyad</th> 
-				<!-- <th>Telefon</th>  -->
-					<th>Email</th> 
+					<th>Kulup Ad</th> 
+					<th>Tarih</th> 
+					<th>Baskan Ad</th> 
 				
 				</tr> 
 			</thead>
 			<tbody>
-				<tr th:each="baskan, iterationStatus : ${baskanlar}">
+				<tr th:each="basvuru, iterationStatus : ${basvurular}">
 					<td th:text="${iterationStatus.count}">1</td>
-					<td th:text="${baskan.baskanAdSoyad}">Ad Soyad</td>
-				<!-- 	<td th:text="${baskan.baskanTelefon}">Telefon</td>  -->
-					<td th:text="${baskan.baskanMail}">Email</td>
+					<td th:text="${basvuru.bKulupAd}">Ad</td>
+					<td th:text="${#calendars.format(basvuru.bKulupTarih, 'M/dd/yyyy')}">Tarih</td>
+					<td th:text="${basvuru.bAdSoyad}">Baskan</td>
 			<!-- td><a th:href="|/posts/byAuthor/${author.id}|">Posts By Author</a></td> -->
 				</tr>
 			</tbody>

@@ -20,7 +20,7 @@
 
 	<div class="container">
   		
-	    <nav class="navbar navbar-default">
+	  <nav class="navbar navbar-default">
 		    <div class="container-fluid">
 		        <div class="navbar-header">
 		            <a class="navbar-brand" href="/">Ogrenci Kuluplerine Hosgeldin!</a>
@@ -34,33 +34,42 @@
 				                <li><a href="/kulupler/liste">Liste</a></li>
 				            </ul>
 				        </li>
-				        <li class="dropdown" th:class="${controllerName == 'BaskanActivity'} ? 'dropdown active' : 'dropdown'">
-				            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Baskanlar<span class="caret"></span></a>
-				            <ul class="dropdown-menu">
-				                <li><a href="/baskanlar/liste">Liste</a></li>
-				            </ul>
-				        </li>
-				        <li class="dropdown" th:class="${controllerName == 'Etkinlik'} ? 'dropdown active' : 'dropdown'">
+  			           <li class="dropdown" th:class="${controllerName == 'Etkinlik'} ? 'dropdown active' : 'dropdown'">
 				            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Etkinlikler<span class="caret"></span></a>
 				            <ul class="dropdown-menu">
 				               <li><a href="/etkinlikler/liste">Liste</a></li>	
 				            </ul>
+				        </li>
+				           <li class="dropdown" th:class="${controllerName == 'Basvuru'} ? 'dropdown active' : 'dropdown'">
+				            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Basvuru<span class="caret"></span></a>
+				        <ul class="dropdown-menu">
+				                <li><a href="#"  th:href="@{/basvurular/add}">Kayit Ol</a></li>
+				        </ul>
 				        </li>
 						<li class="dropdown" th:class="${controllerName == 'AdminPost'} ? 'dropdown active' : 'dropdown'" sec:authorize="hasRole('ROLE_ADMIN')">
 				            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
 				            <ul class="dropdown-menu">
 				                <li><a href="/admin/kulupler/">Kulup Ekle</a></li>
 				                <li><a href="/admin/baskanlar/">Baskan Ekle</a></li>
-				                 <li><a href="/admin/konusmacilar/">Konusmaci Ekle</a></li>
+				                <li><a href="/admin/konusmacilar/">Konusmaci Ekle</a></li>
 				                <li><a href="/admin/etkinlikler/">Etkinlik Ekle</a></li>
-				                 <li><a href="/admin/konusmacilar/liste">Konusmacilar</a></li>
-				                    <li><a href="/admin/uyeler/liste">Uyeler</a></li>
-				                 			                
+				                <li><a href="/admin/konusmacilar/liste">Konusmacilar</a></li>
+				                <li><a href="/admin/uyeler/liste">Uyeler</a></li>
+				                <li><a href="/admin/baskanlar/liste">Baskanlar</a></li>
+		                       <li><a href="/admin/basvurular/liste">Basvurular</a></li>                			                
 				            </ul>
-				        </li>					        
+				        </li>	
+				        
+				        	<li class="dropdown" th:class="${controllerName == 'UserPost'} ? 'dropdown active' : 'dropdown'" sec:authorize="hasRole('ROLE_USER')">
+				            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User <span class="caret"></span></a>
+				            <ul class="dropdown-menu">
+				                <li><a href="/user/konusmacilar/">Konusmaci Ekle</a></li>
+				                <li><a href="/user/etkinlikler/">Etkinlik Ekle</a></li>				                     			                
+				            </ul>
+				        </li>	
+				        				        
 				    </ul>
-				   
-	
+				    	
 				    <div class="navbar-text navbar-right">
 			            Hosgeldin <span sec:authentication="name">Kullanicisi</span>
 				    	<form sec:authorize="isAuthenticated()" id="frmlogout" th:action="@{/logout}" method="post" class="form-inline">

@@ -20,6 +20,7 @@ import app.domain.Konusmacim;
 import app.domain.Kulup;
 import app.domain.Login;
 import app.service.BaskanActivityService;
+import app.service.BasvuruService;
 import app.service.EtkinlikService;
 import app.service.KonusmaciService;
 import app.service.KulupActivityService;
@@ -35,16 +36,19 @@ public class AdminPostController {
 	private KonusmaciService konusmaciService;
 	private EtkinlikService etkinlikService;
 	private LoginService loginService;
+	private BasvuruService basvuruService;
 		
 	@Autowired
 	public AdminPostController(KulupActivityService kulupActivityService, BaskanActivityService baskanActivityService,
-			KonusmaciService konusmaciService, EtkinlikService etkinlikService, LoginService loginService) {
+			KonusmaciService konusmaciService, EtkinlikService etkinlikService, LoginService loginService,
+			BasvuruService basvuruService) {
 		
 		this.kulupActivityService = kulupActivityService;
 		this.baskanActivityService = baskanActivityService;
 		this.konusmaciService = konusmaciService;
 		this.etkinlikService = etkinlikService;
 		this.loginService = loginService;
+		this.basvuruService = basvuruService;
 	}
 
 	@RequestMapping("/admin/kulupler")
@@ -54,6 +58,8 @@ public class AdminPostController {
 		model.put("kulupler", kulupActivityService.getKulupler());
 		return new ModelAndView("admin/kulup/addKulup",model);
 	}
+
+
 
 	@RequestMapping( value = "/admin/kulup/save", method = RequestMethod.POST )
 	public ModelAndView saveKulup(Kulup kulup,BindingResult bindingResult){
@@ -146,4 +152,17 @@ public class AdminPostController {
 		return "admin/uye/liste";
 	}
 
+	@RequestMapping("/admin/basvurular/liste")
+	public String listBasvuru(Model model){
+		model.addAttribute("basvurular", basvuruService.getBasvurular());
+		return "admin/basvuru/liste";
+	}
+
+	@RequestMapping("/admin/baskanlar/liste")
+	public String listBaskan(Model model){
+		model.addAttribute("baskanlar", baskanActivityService.getBaskanlar());
+		return "admin/baskan/liste";
+	}
+	
+	
 }

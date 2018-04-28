@@ -13,6 +13,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableGlobalMethodSecurity( securedEnabled = true )
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
+	
+	
 	@Autowired
 	public void configureAuth(AuthenticationManagerBuilder auth) throws Exception{
 		auth
@@ -20,7 +22,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.withUser("admin")
 				.password("{noop}password")
 				.roles("ADMIN")
-			.and();
+			.and()
+		        .withUser("user")
+		        .password("{noop}password")
+		        .roles("USER")
+	        .and();
 		
 	}
 
@@ -30,6 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http
 			.authorizeRequests()
 				.antMatchers("/admin/").hasRole("ADMIN")
+				.antMatchers("/user/").hasRole("USER")
 				.anyRequest().permitAll()
 				.and()
 			.formLogin()

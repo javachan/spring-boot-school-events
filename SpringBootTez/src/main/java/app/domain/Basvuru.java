@@ -29,7 +29,7 @@ public class Basvuru {
 	@Column(name="bKulupAd")
 	private String bKulupAd;
 	
-	@Column(name="bKulupIcerik")
+	@Column(name="bKulupIcerik",columnDefinition="TEXT")
 	private String bKulupIcerik;
 	
 	@Column(name="bKulupLogo")
