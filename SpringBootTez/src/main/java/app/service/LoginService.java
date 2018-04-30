@@ -16,4 +16,5 @@ public interface LoginService {
 	public Login getLogin(int id);
 	
 	public Login deleteLogin(int id);
+
 }
